@@ -24,14 +24,6 @@ _PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
     "evaluator_type": {
         "vgs": "vg_sgg",
     },
-    """
-    "vgs": {
-        "vgs_train": ("vg/VG_100k_images", "vg/vg_motif_anno"),
-        "vgs_val": ("vg/VG_100k_images", "vg/vg_motif_anno"),
-        "vgs_test": ("vg/VG_100k_images", "vg/vg_motif_anno"),
-
-    }
-    """
     "vgs": {
         "vgs_train": ("ag/frames", "ag/annotations"),
         "vgs_val": ("ag/frames", "ag/annotations"),
@@ -39,6 +31,21 @@ _PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
 
     }
 }
+
+"""
+_PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
+    "dataset_type": "VGStanfordDataset",  # visual genome stanford split
+    "evaluator_type": {
+        "vgs": "vg_sgg",
+    },
+    "vgs": {
+        "vgs_train": ("vg/VG_100k_images", "vg/vg_motif_anno"),
+        "vgs_val": ("vg/VG_100k_images", "vg/vg_motif_anno"),
+        "vgs_test": ("vg/VG_100k_images", "vg/vg_motif_anno"),
+
+    }
+}
+"""
 
 PATH_ROUTES.register(_PREDEFINED_SPLITS_VG_STANFORD_SGDET, "VGS")
 
