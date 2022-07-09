@@ -54,3 +54,5 @@ tools/pods_*
 core.*
 
 .history
+checkpoints
+playground/sgg/detr.res101.c5.one_stage_rel_tfmer/playground

@@ -128,7 +128,8 @@ def get_valid_files(args, cfg, logger):
 
     # file_list = glob.glob(os.path.join(cfg.OUTPUT_DIR, "model_*.pth"))
 
-    file_list = glob.glob(cfg.MODEL.WEIGHTS)
+    # file_list = glob.glob(cfg.MODEL.WEIGHTS)
+    file_list = [cfg.MODEL.WEIGHTS]
     if len(file_list) == 0:  # local file invalid, get it from oss
         model_prefix = cfg.OUTPUT_DIR.split("cvpods_playground")[-1][1:]
         remote_file_path = os.path.join(cfg.OSS.DUMP_PREFIX, model_prefix)
@@ -196,6 +197,7 @@ if __name__ == "__main__":
 
 
     print("Command Line Args:", args)
+    print("Config:", config)
     launch(
         main,
         args.num_gpus,

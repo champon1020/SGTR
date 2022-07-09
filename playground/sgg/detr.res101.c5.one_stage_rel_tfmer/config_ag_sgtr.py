@@ -17,7 +17,7 @@ _config_dict = dict(
     DEBUG=False,
     DUMP_INTERMEDITE=False,
 
-    EXPERIMENT_NAME=f"(top1)VG-SGTR-dec_layer{rel_dec_layer}",
+    EXPERIMENT_NAME=f"(top1)AG-SGTR-dec_layer{rel_dec_layer}",
 
     # the program will use this config to uptate the initial config(over write the existed, ignore doesnt existed)
     OVERIDE_CFG_DIR="",
@@ -41,10 +41,10 @@ _config_dict = dict(
 
         #####
         # TEST_WEIGHTS="/public/home/lirj2/projects/sgtr_release/playground/sgg/detr.res101.c5.one_stage_rel_tfmer/log/2022-06-20_11-25-(top1)VG-SGTR-dec_layer6_add_ent_hs/model_0059999.pth",
-        TEST_WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/model_0095999.pth",
+        # TEST_WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/model_0095999.pth",
 
         # WEIGHTS="/storage/data/lirj2/ckpts/vg_detr.pth",
-        WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/detr_vg_ckpt.pth",
+        # WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/detr_vg_ckpt.pth",
 
         RESNETS=dict(
             DEPTH=101,
@@ -243,7 +243,7 @@ _config_dict = dict(
         ),
         # IMS_PER_BATCH=24,  # 四卡时候的batchsize
         IMS_PER_BATCH=4,  # 四卡时候的batchsize
-        IMS_PER_DEVICE=6,
+        IMS_PER_DEVICE=4,
         CHECKPOINT_PERIOD=12000,
     ),
     TEST=dict(

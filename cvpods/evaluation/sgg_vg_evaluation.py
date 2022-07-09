@@ -249,7 +249,7 @@ class VisualGenomeSGGEvaluator(DatasetEvaluator):
                 * value: a dict of {metric name: score}, e.g.: {"AP50": 80}
         """
 
-        # dump the remaining results 
+        # dump the remaining results
 
         if self._dump and self._output_dir is not None:
             out_dir = os.path.join(self._output_dir, "inference_new", self.dataset_name)
@@ -525,7 +525,7 @@ def classic_vg_sgg_evaluation(
 ):
     # get zeroshot triplet
     zeroshot_triplet = torch.load(
-        "/public/home/lirj2/projects/sgtr_release/datasets/vg/vg_motif_anno/zeroshot_triplet.pytorch",
+        "/home/ubuntu/local/SGTR/datasets/vg/vg_motif_anno/zeroshot_triplet.pytorch",
         map_location=torch.device("cpu")).long().numpy()
 
     attribute_on = False
@@ -589,7 +589,7 @@ def classic_vg_sgg_evaluation(
     eval_stagewise_recall.register_container(mode)
     evaluator['eval_stagewise_recall'] = eval_stagewise_recall
 
-    
+
     eval_rel_vec_recall = SGRelVecRecall(cfg, result_dict, predicates_categories)
     eval_rel_vec_recall.register_container(mode)
     evaluator['eval_rel_vec_recall'] = eval_rel_vec_recall
@@ -829,7 +829,7 @@ def evaluate_relation_of_one_image(groundtruth, prediction, global_container, ev
     local_container['rel_cls'] = prediction.get_field(
         'pred_rel_label').detach().cpu().numpy()  # (#pred_rels, num_pred_class)
     if prediction.has_field('rel_vec'):
-        local_container['rel_vec'] = prediction.get_field('rel_vec').detach().cpu().numpy()  
+        local_container['rel_vec'] = prediction.get_field('rel_vec').detach().cpu().numpy()
 
     # about objects
     local_container['pred_boxes'] = prediction.convert('xyxy').bbox.detach().cpu().numpy()  # (#pred_objs, 4)
@@ -906,7 +906,7 @@ def evaluate_relation_of_one_image(groundtruth, prediction, global_container, ev
     # Zero shot Recall
     if evaluator.get("eval_zeroshot_recall") is not None:
         evaluator['eval_zeroshot_recall'].calculate_recall(global_container, local_container, mode)
-    # 
+    #
     if evaluator.get('eval_rel_vec_recall') is not None:
         evaluator['eval_rel_vec_recall'].calculate_recall(global_container, local_container, mode)
 

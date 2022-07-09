@@ -235,7 +235,7 @@ def default_setup(cfg, args, test_weight_dir=None):
 
         print(cfg.MODEL.WEIGHTS_LOAD_MAPPING)
         cfg.merge(ConfigDict(test_config_init))
-        cfg.OUTPUT_DIR = output_dir 
+        cfg.OUTPUT_DIR = output_dir
 
     # if hasattr(args, "config_file") and args.config_file != "":
     #     logger.info("Contents of args.config_file={}:\n{}".format(
