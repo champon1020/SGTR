@@ -730,10 +730,10 @@ def classic_vg_sgg_evaluation(
     result_str += eval_zeroshot_recall.generate_print_string(mode)
     result_str += eval_mean_recall.generate_print_string(mode)
     result_str += eval_ng_mean_recall.generate_print_string(mode)
-    result_str += eval_stagewise_recall.generate_print_string(mode)
-    result_str += eval_rel_vec_recall.generate_print_string(mode)
-    result_str += longtail_part_res_str
-    result_str += stgw_longtail_part_res_str
+    #result_str += eval_stagewise_recall.generate_print_string(mode)
+    #result_str += eval_rel_vec_recall.generate_print_string(mode)
+    #result_str += longtail_part_res_str
+    #result_str += stgw_longtail_part_res_str
     result_str += f"(Non-Graph-Constraint) {ng_longtail_part_res_str}"
 
     if len(indexing_acc_res_str) > 0:
