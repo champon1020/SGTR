@@ -950,11 +950,11 @@ def load_image_filenames(img_dir, image_file, check_img_file):
     with open(image_file, 'r') as f:
         im_data = json.load(f)
 
-    corrupted_ims = ['1592.jpg', '1722.jpg', '4616.jpg', '4617.jpg']
+    corrupted_ims = ['1592.png', '1722.png', '4616.png', '4617.png']
     fns = []
     img_info = []
     for i, img in enumerate(im_data):
-        basename = '{}.jpg'.format(img['image_id'])
+        basename = '{}.png'.format(img['image_id'])
         if basename in corrupted_ims:
             continue
 
