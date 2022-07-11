@@ -242,8 +242,8 @@ _config_dict = dict(
             ENABLED=True, CLIP_VALUE=0.1, CLIP_TYPE="norm", NORM_TYPE=2.0,
         ),
         # IMS_PER_BATCH=24,  # 四卡时候的batchsize
-        IMS_PER_BATCH=4,  # 四卡时候的batchsize
-        IMS_PER_DEVICE=4,
+        IMS_PER_BATCH=16,  # 四卡时候的batchsize
+        IMS_PER_DEVICE=16,
         CHECKPOINT_PERIOD=12000,
     ),
     TEST=dict(

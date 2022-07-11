@@ -962,8 +962,9 @@ def load_image_filenames(img_dir, image_file, check_img_file):
         if os.path.exists(filename) or not check_img_file:
             fns.append(filename)
             img_info.append(img)
-    assert len(fns) == 108073
-    assert len(img_info) == 108073
+    # assert len(fns) == 108073
+    # assert len(img_info) == 108073
+    assert len(fns) == len(img_info)
     return fns, img_info
 
 
