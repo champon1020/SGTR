@@ -19,6 +19,7 @@ Users SHOULD NOT use this file to create new dataset / metadata for new dataset.
 To add new dataset, refer to the tutorial "docs/DATASETS.md".
 """
 
+"""
 _PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
     "dataset_type": "VGStanfordDataset",  # visual genome stanford split
     "evaluator_type": {
@@ -28,6 +29,20 @@ _PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
         "vgs_train": ("ag/frames", "ag/annotations"),
         "vgs_val": ("ag/frames", "ag/annotations"),
         "vgs_test": ("ag/frames", "ag/annotations"),
+
+    }
+}
+"""
+
+_PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
+    "dataset_type": "VGStanfordDataset",  # visual genome stanford split
+    "evaluator_type": {
+        "vgs": "vg_sgg",
+    },
+    "vgs": {
+        "vgs_train": ("vidvrd/frames", "vidvrd/annotations"),
+        "vgs_val": ("vidvrd/frames", "vidvrd/annotations"),
+        "vgs_test": ("vidvrd/frames", "vidvrd/annotations"),
 
     }
 }
