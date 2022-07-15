@@ -171,9 +171,10 @@ _config_dict = dict(
 
             ),
 
-            LONGTAIL_PART_DICT=[None, 'b', 't', 't', 't', 'b', 'b', 'b', 'h', 'b', 't', 'b', 't', 't', 't', 't', 'b',
-                                't', 't', 'b', 'h', 'b', 'h', 'b', 't', 'b', 't', 't', 't', 'h', 'h', 'h', 't', 'b',
-                                't', 'b', 't', 't', 'b', 't', 'b', 'b', 't', 'b', 't', 't', 'b', 'b', 'h', 'b', 'b'],
+            #LONGTAIL_PART_DICT=[None, 'b', 't', 't', 't', 'b', 'b', 'b', 'h', 'b', 't', 'b', 't', 't', 't', 't', 'b',
+            #                    't', 't', 'b', 'h', 'b', 'h', 'b', 't', 'b', 't', 't', 't', 'h', 'h', 'h', 't', 'b',
+            #                    't', 'b', 't', 't', 'b', 't', 'b', 'b', 't', 'b', 't', 't', 'b', 'b', 'h', 'b', 'b'],
+            LONGTAIL_PART_DICT=[None, 'h', 'h', 'h', 't', 'h', 'h', 'h', 'h', 'b', 't', 't', 't', 't', 't', 'h', 'b', 't', 'h', 'b', 'h', 'b', 'h', 't', 't', 't', 't']
 
         ),
         PROPOSAL_GENERATOR=dict(
