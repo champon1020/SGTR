@@ -744,7 +744,7 @@ def classic_vg_sgg_evaluation(
                                     generate_eval_res_dict(eval_zeroshot_recall, mode),
                                     generate_eval_res_dict(eval_mean_recall, mode),
                                     generate_eval_res_dict(eval_ng_mean_recall, mode),
-                                    eval_stagewise_recall.generate_res_dict(mode),
+                                    #eval_stagewise_recall.generate_res_dict(mode),
                                     longtail_part_res_dict, ng_longtail_part_res_dict])
 
     if cfg.MODEL.ROI_RELATION_HEAD.USE_GT_BOX:
