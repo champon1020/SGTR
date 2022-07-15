@@ -226,7 +226,6 @@ class RelHungarianMatcher(nn.Module):
             pred_rel_prob = (
                 outputs["pred_rel_logits"].flatten(0, 1).softmax(-1)
             )  # [batch_size * num_queries, num_classes]
-            print(outputs["pred_rel_logits"].shape)
             cost_class = 32 ** (-pred_rel_prob[:, tgt_rel_labels - 1])
         else:
 
