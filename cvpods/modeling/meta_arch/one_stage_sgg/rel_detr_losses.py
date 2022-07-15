@@ -226,6 +226,7 @@ class RelHungarianMatcher(nn.Module):
             pred_rel_prob = (
                 outputs["pred_rel_logits"].flatten(0, 1).softmax(-1)
             )  # [batch_size * num_queries, num_classes]
+            print(outputs["pred_rel_logits"].shape)
             cost_class = 32 ** (-pred_rel_prob[:, tgt_rel_labels - 1])
         else:
 
@@ -309,7 +310,7 @@ class RelHungarianMatcher(nn.Module):
             cost_foreground_ent[cost_foreground_ent > -1.5] = 0  # both role entities should matching with the GT
             cost_foreground_ent /= 2
 
-        # batch_size * num_rel_queries, num_total_gt_rel 
+        # batch_size * num_rel_queries, num_total_gt_rel
         # -> batch_size * num_rel_queries * num_ent_pairs, num_total_gt_rel
         cost_rel_vec = (
             cost_rel_vec.unsqueeze(1)
@@ -538,9 +539,9 @@ class RelHungarianMatcher(nn.Module):
             indice_multi = []
             for _ in range(topk):
                 # selective matching:
-                # We observe the the macthing is only happend in the 
+                # We observe the the macthing is only happend in the
                 # small set of predictions that have top K cost value,
-                # to this end, we optimize the matching pool by: instead 
+                # to this end, we optimize the matching pool by: instead
                 # matching with all possible prediction, we use the
                 # top K times of GT num predictions for matching
                 min_cost = cost_inplace.min(-1)[0]
