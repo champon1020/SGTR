@@ -52,7 +52,7 @@ _config_dict = dict(
         ),
         DETR=dict(  # entities DETR
             IN_FEATURES="res5",
-            NUM_CLASSES=150,  # for VG
+            NUM_CLASSES=36,  # for VG
             CLASS_LOSS_COEFF=1.0,
             BBOX_LOSS_COEFF=1.0,
             GIOU_LOSS_COEFF=1.0,
@@ -152,7 +152,7 @@ _config_dict = dict(
         ),
 
         ROI_RELATION_HEAD=dict(
-            NUM_CLASSES=50,  # for VG
+            NUM_CLASSES=26,  # for VG
             ENABLED=True,
             DATA_RESAMPLING=dict(
                 ENABLED=False,
