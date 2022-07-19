@@ -44,7 +44,7 @@ _config_dict = dict(
         # TEST_WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/model_0095999.pth",
 
         # WEIGHTS="/storage/data/lirj2/ckpts/vg_detr.pth",
-        # WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/detr_vg_ckpt.pth",
+        WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/detr_vg_ckpt.pth",
 
         RESNETS=dict(
             DEPTH=101,
