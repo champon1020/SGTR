@@ -1,1 +1,1 @@
-config_ag.py
+config_vidvrd.py
