@@ -58,7 +58,6 @@ def main(args):
         image_id = start_image_id
         for file_name in tqdm(annotation_files):
             data = json.load(open(op.join(annotation_dirname, file_name)))
-            video_id = data["video_id"]
             width, height = data["width"], data["height"]
             obj_tid_to_label = {o["tid"]: o["category"] for o in data["subject/objects"]}
 
@@ -66,7 +65,7 @@ def main(args):
                 if len(frame) == 0:
                     continue
                 updated = False
-                frame_id = f"{video_id}.mp4/{fid:06d}.jpg"
+                frame_id = f"{image_id}.jpg"
                 for ind, bbox in enumerate(frame):
                     if bbox is None:
                         continue

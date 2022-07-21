@@ -56,3 +56,8 @@ core.*
 .history
 checkpoints
 playground/sgg/detr.res101.c5.one_stage_rel_tfmer/playground
+playground/detection/coco/detr/detr.res101.c5.coco.multiscale.150e.bs16/README.md
+playground/detection/coco/detr/detr.res101.c5.coco.multiscale.150e.bs16/playground/
+
+!requirements.txt
+!requirements_detailed.txt
