@@ -121,7 +121,7 @@ class SGRelVecRecall(SceneGraphEvaluation):
 
     def register_container(self, mode):
         for match_type in ['det', 'loc']:
-            self.result_dict[f"{mode}_{self.type}_{match_type}"] = {20: [], 50: [], 100: []}
+            self.result_dict[f"{mode}_{self.type}_{match_type}"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
             self.result_dict[f"{mode}_{match_type}_mean_recall_collect"] = {
                 20: torch.zeros((self.num_rel_cls, 2), dtype=torch.int64),
                 50: torch.zeros((self.num_rel_cls, 2), dtype=torch.int64),
@@ -135,14 +135,14 @@ class SGRelVecRecall(SceneGraphEvaluation):
         for match_type in ['det', 'loc']:
             for k, v in self.result_dict[f"{mode}_{self.type}_{match_type}"].items():
                 result_str += "  R @ %d: %.4f; " % (k, np.mean(v))
-            result_str += f" for mode={mode}, type=Recall({match_type})." 
+            result_str += f" for mode={mode}, type=Recall({match_type})."
             result_str += "\n"
 
         result_str += "Per-class: \n"
         for match_type in ['det', 'loc']:
             for k, v in self.result_dict[f"{mode}_{match_type}_mean_recall_collect"].items():
                 result_str += "  mR @ %d: %.4f; " % (k, torch.mean(v[1:,0] / (v[1:,1] + 1e-5)))
-            result_str += f" for mode={mode}, type=Recall({match_type})." 
+            result_str += f" for mode={mode}, type=Recall({match_type})."
             result_str += "\n----------------------- Details ------------------------\n"
 
             for n, r in zip(
@@ -151,7 +151,7 @@ class SGRelVecRecall(SceneGraphEvaluation):
                 result_str += "({}:{:.4f}) ".format(str(n), float(r[0]/(r[1] + 1e-5)))
             result_str += "\n--------------------------------------------------------\n\n"
 
-        
+
         return result_str
 
     def calculate_recall(self, global_container, local_container, mode):
@@ -159,7 +159,7 @@ class SGRelVecRecall(SceneGraphEvaluation):
         for topk in [20, 50, 100]:
             pred_rels_cls = torch.from_numpy(local_container['rel_cls'][:topk])
             pred_rel_vec = torch.from_numpy(local_container['rel_vec'][:topk])
-            
+
             gt_rels = torch.from_numpy(local_container["gt_rels"])
             gt_boxes = torch.from_numpy(local_container["gt_boxes"])
 
@@ -167,9 +167,9 @@ class SGRelVecRecall(SceneGraphEvaluation):
             gt_rel_vector = torch.cat((gt_box_cnter[gt_rels[:, 0]], gt_box_cnter[gt_rels[:, 1]]),dim=1)
 
             error_ratio = 0.2
-            gt_rel_vec_dist_thres = (torch.abs(gt_rel_vector[:, 0] - gt_rel_vector[:,2]) 
+            gt_rel_vec_dist_thres = (torch.abs(gt_rel_vector[:, 0] - gt_rel_vector[:,2])
                                                     + torch.abs(gt_rel_vector[:, 1] - gt_rel_vector[:,3])) * 0.5 * error_ratio
-            
+
 
             rel_vec_dist = torch.cdist(gt_rel_vector, pred_rel_vec, p=1) / 4
             match_idx = rel_vec_dist <= gt_rel_vec_dist_thres.unsqueeze(-1) # num_gt, num_pred
@@ -208,7 +208,7 @@ class SGRelVecRecall(SceneGraphEvaluation):
 
             stat_per_class_recall_hit('loc', loc_match_gt_idx)
             stat_per_class_recall_hit('det', det_match_gt_idx)
-        
+
 
 class SGRecall(SceneGraphEvaluation):
     def __init__(self, result_dict):
@@ -216,7 +216,7 @@ class SGRecall(SceneGraphEvaluation):
         self.type = "recall"
 
     def register_container(self, mode):
-        self.result_dict[mode + f"_{self.type}"] = {20: [], 50: [], 100: []}
+        self.result_dict[mode + f"_{self.type}"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
 
     def generate_print_string(self, mode):
         result_str = "SGG eval: "
@@ -287,7 +287,7 @@ class SGNoGraphConstraintRecall(SceneGraphEvaluation):
         self.cfg = cfg
 
     def register_container(self, mode):
-        self.result_dict[mode + "_recall_nogc"] = {20: [], 50: [], 100: []}
+        self.result_dict[mode + "_recall_nogc"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
 
     def generate_print_string(self, mode):
         result_str = "SGG eval: "
@@ -357,7 +357,7 @@ class SGZeroShotRecall(SceneGraphEvaluation):
         self.total_zeroshot_num = 0
 
     def register_container(self, mode):
-        self.result_dict[mode + "_zeroshot_recall"] = {20: [], 50: [], 100: []}
+        self.result_dict[mode + "_zeroshot_recall"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
 
     def generate_print_string(self, mode):
         result_str = "SGG eval: "
@@ -415,8 +415,8 @@ class SGPairAccuracy(SceneGraphEvaluation):
         super(SGPairAccuracy, self).__init__(result_dict)
 
     def register_container(self, mode):
-        self.result_dict[mode + "_accuracy_hit"] = {20: [], 50: [], 100: []}
-        self.result_dict[mode + "_accuracy_count"] = {20: [], 50: [], 100: []}
+        self.result_dict[mode + "_accuracy_hit"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
+        self.result_dict[mode + "_accuracy_count"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
 
     def generate_print_string(self, mode):
         result_str = "SGG eval: "
@@ -476,13 +476,17 @@ class SGMeanRecall(SceneGraphEvaluation):
     def register_container(self, mode):
         # self.result_dict[mode + '_recall_hit'] = {20: [0]*self.num_rel, 50: [0]*self.num_rel, 100: [0]*self.num_rel}
         # self.result_dict[mode + '_recall_count'] = {20: [0]*self.num_rel, 50: [0]*self.num_rel, 100: [0]*self.num_rel}
-        self.result_dict[mode + "_mean_recall"] = {20: 0.0, 50: 0.0, 100: 0.0}
+        self.result_dict[mode + "_mean_recall"] = {1: 0.0, 3: 0.0, 5: 0.0, 10: 0.0, 20: 0.0, 50: 0.0, 100: 0.0}
         self.result_dict[mode + "_mean_recall_collect"] = {
+            1: [[] for i in range(self.num_rel)],
+            3: [[] for i in range(self.num_rel)],
+            5: [[] for i in range(self.num_rel)],
+            10: [[] for i in range(self.num_rel)],
             20: [[] for i in range(self.num_rel)],
             50: [[] for i in range(self.num_rel)],
             100: [[] for i in range(self.num_rel)],
         }
-        self.result_dict[mode + "_mean_recall_list"] = {20: [], 50: [], 100: []}
+        self.result_dict[mode + "_mean_recall_list"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
 
     def generate_print_string(self, mode):
         result_str = "SGG eval: "
@@ -560,13 +564,17 @@ class SGNGMeanRecall(SceneGraphEvaluation):
         self.type = "ng_mean_recall"
 
     def register_container(self, mode):
-        self.result_dict[mode + "_ng_mean_recall"] = {20: 0.0, 50: 0.0, 100: 0.0}
+        self.result_dict[mode + "_ng_mean_recall"] = {1: 0.0, 3: 0.0, 5: 0.0, 10: 0.0, 20: 0.0, 50: 0.0, 100: 0.0}
         self.result_dict[mode + "_ng_mean_recall_collect"] = {
+            1: [[] for i in range(self.num_rel)],
+            3: [[] for i in range(self.num_rel)],
+            5: [[] for i in range(self.num_rel)],
+            10: [[] for i in range(self.num_rel)],
             20: [[] for i in range(self.num_rel)],
             50: [[] for i in range(self.num_rel)],
             100: [[] for i in range(self.num_rel)],
         }
-        self.result_dict[mode + "_ng_mean_recall_list"] = {20: [], 50: [], 100: []}
+        self.result_dict[mode + "_ng_mean_recall_list"] = {1: [], 3: [], 5: [], 10: [], 20: [], 50: [], 100: []}
 
     def generate_print_string(self, mode):
         result_str = "SGG eval: "
