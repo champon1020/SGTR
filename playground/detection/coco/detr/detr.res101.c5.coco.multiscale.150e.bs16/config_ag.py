@@ -76,7 +76,7 @@ _config_dict = dict(
             NORM_TYPE=2.0,
         ),
         IMS_PER_BATCH=12,
-        IMS_PER_DEVICE=6,
+        IMS_PER_DEVICE=3,
         CHECKPOINT_PERIOD=5,
     ),
     DATALOADER=dict(
