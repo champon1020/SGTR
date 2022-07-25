@@ -180,6 +180,7 @@ _config_dict = dict(
             ),
 
             USE_GT_BOX=False,
+            PHRDET=False,
             USE_GT_OBJECT_LABEL=False,
             BATCH_SIZE_PER_IMAGE=768,  # max relationship proposals in training time
             MAX_PROPOSAL_PAIR=4096,  # max proposals number in inference time
@@ -297,5 +298,3 @@ class OneStageRelDetrBASEConfig(DETRConfig):
     def __init__(self):
         super(OneStageRelDetrBASEConfig, self).__init__()
         self._register_configuration(_config_dict)
-
-

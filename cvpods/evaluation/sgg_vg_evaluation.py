@@ -536,6 +536,8 @@ def classic_vg_sgg_evaluation(
             mode = 'predcls'
         else:
             mode = 'sgcls'
+    elif cfg.MODEL.ROI_RELATION_HEAD.PHRDET:
+        mode = 'phrdet'
     else:
         mode = 'sgdet'
 
