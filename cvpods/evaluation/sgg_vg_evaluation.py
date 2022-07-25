@@ -909,6 +909,7 @@ def evaluate_relation_of_one_image(groundtruth, prediction, global_container, ev
     if evaluator.get("eval_zeroshot_recall") is not None:
         evaluator['eval_zeroshot_recall'].calculate_recall(global_container, local_container, mode)
     #
+    """
     if evaluator.get('eval_rel_vec_recall') is not None:
         evaluator['eval_rel_vec_recall'].calculate_recall(global_container, local_container, mode)
 
@@ -921,6 +922,7 @@ def evaluate_relation_of_one_image(groundtruth, prediction, global_container, ev
                               pred_boxlist=prediction.convert('xyxy').to("cpu"),
                               pred_rel_pair_idx=prediction.get_field('rel_pair_idxs').long().detach().cpu(),
                               pred_rel_dist=prediction.get_field('pred_rel_dist').detach().cpu())
+    """
     return
 
 

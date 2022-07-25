@@ -1,1 +1,1 @@
-./config_vidvrd.py
+config_vidvrd.py
