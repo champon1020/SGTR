@@ -20,7 +20,7 @@ To add new dataset, refer to the tutorial "docs/DATASETS.md".
 """
 
 
-"""
+
 _PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
     "dataset_type": "VGStanfordDataset",  # visual genome stanford split
     "evaluator_type": {
@@ -46,6 +46,7 @@ _PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
 
     }
 }
+"""
 
 """
 _PREDEFINED_SPLITS_VG_STANFORD_SGDET = {
