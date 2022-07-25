@@ -45,7 +45,8 @@ _config_dict = dict(
 
         # WEIGHTS="/storage/data/lirj2/ckpts/vg_detr.pth",
         # WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/sgtr_vg_new_pth/detr_vg_ckpt.pth",
-        WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/detr_vidvrd_ckpt.pth",
+        # WEIGHTS="/home/ubuntu/local/SGTR/checkpoints/detr_vidvrd_ckpt.pth",
+        WEIGHTS="/home/ubuntu/local/SGTR/playground/sgg/detr.res101.c5.one_stage_rel_tfmer/playground/sgg/detr.res101.c5.one_stage_rel_tfmer/2022-07-19_20-25-(top1)VidVRD-SGTR-dec_layer6/model_0023999.pth",
 
         RESNETS=dict(
             DEPTH=101,
